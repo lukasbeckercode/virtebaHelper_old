@@ -1,0 +1,44 @@
+125---Reanimation nicht traumatisch
+131---Reanimation traumatisch
+210---Sonstige Kombinierte Verletzungen(Chirugie)
+211---Polytrauma mit SHT
+212---Polytrauma ohne SHT
+214---Gesichts-/Kopfverletzung(ausser Kopfplatzwunde)
+215---Gesichts-/Kopfverletzung mit Augenbeteiligung
+216---Gesichts-/Kopfverletzung mit HNO- oder MKG-Beteiligung
+221---Schädelhirntrauma(SHT) offen
+222---Schädelhirntrauma(SHT) geschlossen
+230---sonstige thoraxchirurgische Verletzung
+231---Thoraxverletzung penetrierend
+232---Thoraxverletzung geschlossen/stumpf
+234---Riss-,Quetsch-,Schnitt-,Stich-,Kopfplatzwunde
+235---Bisswunde
+236---Dekubitus
+240---sonstige bauchchirurgische Notfälle
+241---Abdomenverletzung penetrierend
+242---Abdomenverletzung geschlossen/stumpf
+243---Akutes Abdomen(nicht traumatisch)
+244---V.a. Blinddarmentzündung
+251---Wirbelsäulentrauma mit neurolog. Ausfällen
+252---Wirbelsäulentrauma ohne neurolog. Ausfällen
+253---Wirbelsäule/Bandscheibe nicht traumatisch mit neurolog. Ausfällen
+254---Wirbelsäule/Bandscheibe nicht traumatisch ohne neurolog. Ausfällen
+270---sonstige kombinierte Extremitätenverletzung
+271---Extremitätenfraktur offen
+272---Extremitätenfraktur geschlossen
+273---Schenkelhalsfraktur
+274---Gelenksluxation
+275---sonstige Handverletzung
+276---Hand-Amputation
+277---Finger-Amputation
+278---Extremitäten-Amputation
+279---Extremitäten Verstauchung, Zerrung, Prellung
+282---Verätzung
+283---Blitzschlag/Hochspannungstrauma
+284---Verbrennung/Verbrühung 1.Grades
+285---Verbrennung/Verbrühung 2.Grades oder 3.Grades
+290---sonstige gefäßchirurgische Notfälle
+291---Extremitätenverletzung mit Gefäß-/Nervenbeteiligung
+292---Aortenaneurysma
+293---Extremität kühl, pulslos
+294---Extremität gerötet und überwärmt
