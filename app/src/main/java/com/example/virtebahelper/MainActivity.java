@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private Button button1;
+    private EditText text1;
     private String data; // a var to save the read data to
 
     private final String [] codesComplete = new String[156] ;   //A String array that saves each read line, Length=number of lines -1
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         textView= findViewById(R.id.textView1); //Add the TextView
         textView.setMovementMethod(new ScrollingMovementMethod()); //make it scrollable
         button1=findViewById(R.id.button1);//add the button
+        text1=findViewById(R.id.editText1);//add a textbox
         stream = this.getResources().openRawResource(R.raw.pzc); //get the file
         reader = new BufferedReader(new InputStreamReader(stream));
 
