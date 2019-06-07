@@ -5,22 +5,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.text.method.ScrollingMovementMethod;
+
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.util.Arrays;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private Button button1;
-    private EditText text1;
-    private String data; // a var to save the read data to
+    private AutoCompleteTextView textView;
+    private EditText number;
+
 
     private final String [] codesComplete = new String[156] ;   //A String array that saves each read line, Length=number of lines -1
     private final String [] code =new String[156]; //the number of the diagnosis
@@ -28,16 +32,18 @@ public class MainActivity extends AppCompatActivity {
 
     private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
     private BufferedReader reader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView= findViewById(R.id.textView1); //Add the TextView
         textView.setMovementMethod(new ScrollingMovementMethod()); //make it scrollable
-        button1=findViewById(R.id.button1);//add the button
-        text1=findViewById(R.id.editText1);//add a textbox
+
+        number = findViewById(R.id.editText);
         stream = this.getResources().openRawResource(R.raw.pzc); //get the file
         reader = new BufferedReader(new InputStreamReader(stream));
+
 
         final Thread readThread = new Thread(new Runnable() { //using a thread here to speed things up
             @Override
@@ -48,22 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
         });
         readThread.start(); //start the thread
+        //noinspection StatementWithEmptyBody
         while (readThread.isAlive()) //wait until the thread is done
         {
-            System.out.print('.');
+           // System.out.print('.'); For Debugging
         }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, diag);
+        textView.setAdapter(adapter);
+     textView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+         @Override
+         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String selectedItem = textView.getText().toString();
+             int pos = Arrays.asList(diag).indexOf(selectedItem);
+             number.setText(code[pos]);
 
-        button1.setOnClickListener(new View.OnClickListener() { //event handler for the button
-            @Override
-            public void onClick(View v) {
+         }
+     });
 
-                for (int i = 0; i<= 10; i++) //print the first 10 lines FOR DEBUGGING
-                {
-                    textView.append(code[i] + ":" + diag[i] + "\n");//append the read data to the TextView FOR DEBUGGING
-                }
-
-            }
-        });
 
     }
     private void readFunction() //read function, necessary because of anonymous inner class in thread
@@ -71,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         if (stream != null) {
             try {
 
+                // a var to save the read data to
+                String data;
                 for (int i = 0; (data = reader.readLine()) != null; i++) //read until every line is finished
                 {
                     codesComplete[i] = data; //add the data to the Array
