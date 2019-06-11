@@ -152,5 +152,5 @@
 734---postoperative Nachblutung
 735---Fremdkörper in Ohr/ Nase
 736---Tinnitus
-741---ZMK-Erkrankung
+741---Zahn-, Mund-, Kiefer- Erkrankung
 751---Strahlenexpostition
