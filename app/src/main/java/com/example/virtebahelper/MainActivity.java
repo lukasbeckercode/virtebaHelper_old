@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 import android.text.method.ScrollingMovementMethod;
 
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -45,13 +43,39 @@ public class MainActivity extends AppCompatActivity {
         reader = new BufferedReader(new InputStreamReader(stream));
 
 
-        final Thread readThread = new Thread(new Runnable() { //using a thread here to speed things up
+       /* final Thread readThread = new Thread(new Runnable() { //using a thread here to speed things up
             @Override
             public void run() {
               readFunction(); //calling read function because of anonymous inner class
         }
 
+        });*/
+        final Thread readThread = new Thread(()->{
+            if (stream != null) {
+                try {
 
+                    // a var to save the read data to
+                    String data;
+                    for (int i = 0; (data = reader.readLine()) != null; i++) //read until every line is finished
+                    {
+                        codesComplete[i] = data; //add the data to the Array
+                    }
+
+                    for (int i = 0; i < codesComplete.length; i++) {
+                        code[i] = codesComplete[i].substring(0, codesComplete[i].indexOf("---")); //read the code
+                        diag[i] = codesComplete[i].substring(codesComplete[i].indexOf("---") + 3); //read the diagnosis
+
+
+                    }
+
+
+                    stream.close(); //close the stream
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         });
         readThread.start(); //start the thread
         //noinspection StatementWithEmptyBody
@@ -61,44 +85,13 @@ public class MainActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, diag);
         textView.setAdapter(adapter);
-     textView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-         @Override
-         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            String selectedItem = textView.getText().toString();
-             int pos = Arrays.asList(diag).indexOf(selectedItem);
-             number.setText(code[pos]);
+     textView.setOnItemClickListener((parent, view, position, id) -> {
+        String selectedItem = textView.getText().toString();
+         int pos = Arrays.asList(diag).indexOf(selectedItem);
+         number.setText(code[pos]);
 
-         }
      });
 
 
-    }
-    private void readFunction() //read function, necessary because of anonymous inner class in thread
-    {
-        if (stream != null) {
-            try {
-
-                // a var to save the read data to
-                String data;
-                for (int i = 0; (data = reader.readLine()) != null; i++) //read until every line is finished
-                {
-                    codesComplete[i] = data; //add the data to the Array
-                }
-
-                for (int i = 0; i < codesComplete.length; i++) {
-                    code[i] = codesComplete[i].substring(0, codesComplete[i].indexOf("---")); //read the code
-                    diag[i] = codesComplete[i].substring(codesComplete[i].indexOf("---") + 3); //read the diagnosis
-
-
-                }
-
-
-                stream.close(); //close the stream
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
