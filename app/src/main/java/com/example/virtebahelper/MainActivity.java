@@ -1,3 +1,9 @@
+/*
+An Android App that helps EMT´s in Austria with VirtEBA.
+Also an age calculator
+Copyright: Lukas Becker, 2019
+*/
+
 package com.example.virtebahelper;
 
 
@@ -24,6 +30,7 @@ import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
+    //UI Variables
     private AutoCompleteTextView textView;
     private EditText number;
     private EditText date;
@@ -41,16 +48,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        textView= findViewById(R.id.textView1); //Add the TextView
-        textView.setMovementMethod(new ScrollingMovementMethod()); //make it scrollable
+        setContentView(R.layout.activity_main); //set the view to activity.main
 
+        //Add the UI Items
+        textView= findViewById(R.id.textView1);
         number = findViewById(R.id.editText);
-        stream = this.getResources().openRawResource(R.raw.pzc); //get the file
-        reader = new BufferedReader(new InputStreamReader(stream));
         date = findViewById(R.id.editTextDate);
         Button calcDateBtn = findViewById(R.id.buttonCalc);
         age = findViewById(R.id.editTextAge);
+
+        textView.setMovementMethod(new ScrollingMovementMethod()); //make the textView scrollable
+
+
+        stream = this.getResources().openRawResource(R.raw.pzc); //get the file
+        reader = new BufferedReader(new InputStreamReader(stream));
+
 
         final Thread readThread = new Thread(()->{
             if (stream != null) {
@@ -85,54 +97,64 @@ public class MainActivity extends AppCompatActivity {
         {
            // System.out.print('.'); For Debugging
         }
+
+        //convert pzc.txt to fit into the textView
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, diag);
         textView.setAdapter(adapter);
+
+        //Listener for when somebody clicks any item of the textView
      textView.setOnItemClickListener((parent, view, position, id) -> {
-        String selectedItem = textView.getText().toString();
-         int pos = Arrays.asList(diag).indexOf(selectedItem);
-         number.setText(code[pos]);
+        String selectedItem = textView.getText().toString(); //save the selected item to a local variable
+         int pos = Arrays.asList(diag).indexOf(selectedItem); // save the position of the selection within the Array to pos
+         number.setText(code[pos]); //display the corresponding number to the chosen item
 
      });
+
+        //Listener for when somebody clicks the Button
         calcDateBtn.setOnClickListener((v)->{
-            String getDate ;
-            String getDay = "0";
-            String getMonth ="0";
-            String getYear="0";
+
+            String getDate ; //Date
+            String getDay = "0"; //Day to be extracted out of Date
+            String getMonth ="0"; //Month to be extracted out of Date
+            String getYear="0"; //Year to be extracted out of Date
 
 
-            if(!date.getText().toString().equals(""))
+            if(!date.getText().toString().equals("")) //Check if something is written inside the field
             {
-                 getDate =  date.getText().toString();
-                 try {
-                     if(getDate.contains(".")) {
-                         getDay = getDate.substring(0, getDate.indexOf("."));
-                         getMonth = getDate.substring(getDate.indexOf(".") + 1, getDate.lastIndexOf("."));
-                         getYear = getDate.substring(getDate.lastIndexOf(".") + 1);
-                     } else if (getDate.contains("/"))
+                 getDate =  date.getText().toString(); //save the input to the local variable
+                 try { //users are stupid, so we use this to avoid the app crashing
+
+                     //There are two allowed separators / and . :
+                     if(getDate.contains(".")) { //if the . is used
+
+                         getDay = getDate.substring(0, getDate.indexOf(".")); //first number in front of the .
+                         getMonth = getDate.substring(getDate.indexOf(".") + 1, getDate.lastIndexOf(".")); //number between the two .
+                         getYear = getDate.substring(getDate.lastIndexOf(".") + 1); //number after the last .
+                     } else if (getDate.contains("/")) // do the same thing but with /
                      {
                          getDay = getDate.substring(0, getDate.indexOf("/"));
                          getMonth = getDate.substring(getDate.indexOf("/") + 1, getDate.lastIndexOf("/"));
                          getYear = getDate.substring(getDate.lastIndexOf("/") + 1);
 
-                     } else age.setText("Format DD.MM.YYYY verwenden");
+                     } else age.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
 
                  } catch (Exception e) {
 
                      e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
-                     age.setText("Format DD.MM.YYYY verwenden");
+                     age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
                  }
                  try {
-                     int i = calcAge(Integer.parseInt(getDay),Integer.parseInt(getMonth), Integer.parseInt(getYear));
-                     age.setText(String.valueOf(i));
+                     int i = calcAge(Integer.parseInt(getDay),Integer.parseInt(getMonth), Integer.parseInt(getYear)); //call the method calcAge, parse the Strings to ints
+                     age.setText(String.valueOf(i)); //tell the user the age
                  } catch (Exception e)
                  {
-                     e.printStackTrace();
-                     age.setText("Format DD.MM.YYYY verwenden");
+                     e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
+                     age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
                  }
 
 
             } else {
-                age.setText("Format DD.MM.YYYY verwenden");
+                age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
             }
 
 
@@ -142,23 +164,28 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private int calcAge(int d, int m, int y)
+    private int calcAge(int d, int m, int y) //this method calculates the age
     {
         int age;
-            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-            int curDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+            Calendar calendar = Calendar.getInstance(TimeZone.getDefault()); //create a calender object that uses the devices default time zone
+            int curDay = calendar.get(Calendar.DAY_OF_MONTH); //get the current day
             int curMonth = calendar.get(Calendar.MONTH)+1; //Months are indexed from 0!
-            int curYear = calendar.get(Calendar.YEAR);
+            int curYear = calendar.get(Calendar.YEAR); //get the current year
 
             System.out.println(curDay+"/"+curMonth+"/"+curYear);//DEBUGGING
-        if(y<1000 && y>19 )
+
+        //if the user enters YY instead of YYYY, we have to do this:
+        if(y<1000 && y>19 ) //below 1000 means YY, above 19 means the person is probably old
         {
             y +=1900;
-        }else if (y<19)
+        }else if (y<19) // below 1000 = below 19 means YY, below 19 means the person is probably a child (CAVE: or very old)
         {
             y +=2000;
         }
-        age = curYear - y;
+        age = curYear - y; // calculate the age
+
+        //if the person hadn´t had their birthday yet, we need to subtract 1 year from their age
         if(m<curMonth)
         {
             if (d < curDay) {
@@ -166,6 +193,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        return age;
+        return age; //return the age
     }
 }
