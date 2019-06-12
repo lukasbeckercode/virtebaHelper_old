@@ -186,9 +186,9 @@ public class MainActivity extends AppCompatActivity {
         age = curYear - y; // calculate the age
 
         //if the person hadn´t had their birthday yet, we need to subtract 1 year from their age
-        if(m<curMonth)
+        if(m>curMonth)
         {
-            if (d < curDay) {
+            if (d > curDay) {
                 age--;
             }
         }
