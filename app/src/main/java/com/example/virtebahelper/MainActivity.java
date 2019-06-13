@@ -136,7 +136,13 @@ public class MainActivity extends AppCompatActivity {
                          getMonth = getDate.substring(getDate.indexOf("/") + 1, getDate.lastIndexOf("/"));
                          getYear = getDate.substring(getDate.lastIndexOf("/") + 1);
 
-                     } else age.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
+                     } else if(!getDate.isEmpty()) {
+                         getDay = getDate.substring(0,2);
+                         getMonth = getDate.substring(2,4);
+                         getYear = getDate.substring(4);
+
+                     }
+                     else age.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
 
                  } catch (Exception e) {
 
