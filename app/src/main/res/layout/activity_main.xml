@@ -47,7 +47,7 @@
         android:hint="@string/dd_mm_yyyy"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" tools:targetApi="o" />
 
     <Button
         android:id="@+id/buttonCalc"
@@ -74,7 +74,8 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        android:importantForAutofill="no" />
 
 
 </android.support.constraint.ConstraintLayout>
