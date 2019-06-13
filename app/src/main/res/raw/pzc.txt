@@ -1,6 +1,6 @@
 125---Reanimation nicht traumatisch
 131---Reanimation traumatisch
-210---Sonstige Kombinierte Verletzungen(Chirugie)
+210---Sonstige Kombinierte Verletzungen(Chirurgie)
 211---Polytrauma mit SHT
 212---Polytrauma ohne SHT
 214---Gesichts-/ Kopfverletzung(ausser Kopfplatzwunde)
@@ -69,12 +69,12 @@
 333---Akutes Koronarsyndrom(ACS)
 334---Brustschmer, kardial
 335---Brustschmer, nicht kardial
-341---Arrythmie/ Rhythmusstörung
+341---Arrhythmie/ Rhythmusstörung
 344---Elektrounfall(Niederspannung)
 348---Herzinsuffizienz/ Lungenödem
 349---Lungenembolie
 350---sonstige gastroenterologische Erkrankungen
-351---Bluterberechen
+351---Bluterbrechen
 352---rektaler Blutabgang/ Teerstuhl
 353---unklares Abdomen(nicht Chirurgisch)
 354---Durchfall
@@ -131,11 +131,11 @@
 533---Sexualdelikt
 703---Haut- und Geschlechtskrankheiten
 710---sonstige urologische Erkrankungen
-711---Flankenschmerz/Nieren-/Harnleiterkolik
-712---Hoden-/Penisschmerz
+711---Flankenschmerz/ Nieren-/ Harnleiterkolik
+712---Hoden-/ Penisschmerz
 713---Harnverhalt
 714---Blut im Harn
-715---Katheterwechsel/Katheterproblem
+715---Katheterwechsel/ Katheterproblem
 717---Harnwegsinfekt
 718---isoliertes Trauma im Genitalbereich(männlich)
 719---isoliertes Trauma im Genitalbereich(weiblich)
@@ -153,4 +153,4 @@
 735---Fremdkörper in Ohr/ Nase
 736---Tinnitus
 741---Zahn-, Mund-, Kiefer- Erkrankung
-751---Strahlenexpostition
+751---Strahlenexposition
