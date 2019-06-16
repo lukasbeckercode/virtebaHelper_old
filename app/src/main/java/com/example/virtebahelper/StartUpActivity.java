@@ -12,14 +12,14 @@ import android.widget.Button;
 public class StartUpActivity extends AppCompatActivity {
 
     //Button Variables
-    Button openSearchBtn;
-    Button openChirBtn;
-    Button openInternBtn;
-    Button openNeuroBtn;
-    Button openPsychBtn;
-    Button openGynBtn;
-    Button openSonstBtn;
-    Button openAgeCalcBtn;
+    private Button openSearchBtn;
+    private Button openChirBtn;
+    private Button openInternBtn;
+    private Button openNeuroBtn;
+    private Button openPsychBtn;
+    private Button openGynBtn;
+    private Button openSonstBtn;
+    private Button openAgeCalcBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

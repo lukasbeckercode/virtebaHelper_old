@@ -25,8 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.TimeZone;
 
 
 public class SearcherActivity extends AppCompatActivity {
@@ -37,9 +35,9 @@ public class SearcherActivity extends AppCompatActivity {
 
 
 
-    public final String [] codesComplete = new String[156] ;   //A String array that saves each read line, Length=number of lines -1
-    public final String [] code =new String[156]; //the number of the diagnosis
-    public final String [] diag = new String[156]; //the diagnosis
+    private final String [] codesComplete = new String[156] ;   //A String array that saves each read line, Length=number of lines -1
+    private final String [] code =new String[156]; //the number of the diagnosis
+    private final String [] diag = new String[156]; //the diagnosis
 
     private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
     private BufferedReader reader;

@@ -3,4 +3,5 @@
     <string name="dd_mm_yyyy">DD.MM.YYYY</string>
     <string name="pzc">PZC</string>
     <string name="alter">Alter</string>
+    <string name="pzc_s_erscheinen_hier">PZC´s erscheinen hier</string>
 </resources>
