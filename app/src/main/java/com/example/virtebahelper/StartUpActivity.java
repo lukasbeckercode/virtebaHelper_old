@@ -1,9 +1,15 @@
 /*
-* This is the launch Activity.
+An Android App that helps EMT´s in Austria with VirtEBA.
+Also an age calculator
+Copyright: Lukas Becker, 2019
+
+This is the launcher Class (i.e. the main menu)
 */
+
 
 package com.example.virtebahelper;
 
+//imports handled by IntelliJ
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +22,10 @@ import java.io.InputStreamReader;
 public class StartUpActivity extends AppCompatActivity {
     private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
     private BufferedReader reader;
-    public String [] compCodes = new String[156];
-    public static String [] allDiag = new String[156];
-    public static String [] allCodes = new String[156];
+    public String [] compCodes = new String[156]; //the entire text of pzc.txt is saved here
+    //These will be accessed bya all the other Activities!
+    public static String [] allDiag = new String[156]; //only the diagnosis text is saved here
+    public static String [] allCodes = new String[156]; //only the pzc´s are saved here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +43,7 @@ public class StartUpActivity extends AppCompatActivity {
         Button openSonstBtn = findViewById(R.id.openSonstBtn);
         Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
 
-       readData(R.raw.pzc);
-
-        openSonstBtn.setClickable(true);
+        readData(R.raw.pzc); //call the Method to read the Textfile (argument is the location of the file)
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());
@@ -50,6 +55,8 @@ public class StartUpActivity extends AppCompatActivity {
         openSonstBtn.setOnClickListener(v->openSonstActivity());
         openAgeCalcBtn.setOnClickListener(v->openAgeCalcActivity());
     }
+
+    //All these methods open the corresponding Activity(=class)
 
     private void openSearchActivity(){
         Intent openSearchIntent = new Intent(this,SearcherActivity.class);
@@ -88,6 +95,7 @@ public class StartUpActivity extends AppCompatActivity {
         startActivity(openAgeCalcIntent);
     }
 
+    //this method reads the pzc.txt file
     public void readData(int id){
         stream = this.getResources().openRawResource(id); //get the file
         reader = new BufferedReader(new InputStreamReader(stream));
@@ -113,12 +121,12 @@ public class StartUpActivity extends AppCompatActivity {
                     stream.close(); //close the stream
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    e.printStackTrace(); //remove for final build
                 }
             }
         });
         readThread.start();
-        while (readThread.isAlive())
+        while (readThread.isAlive()) //wait for the thread to finish(possibly useless, IDK)
         {
 
         }

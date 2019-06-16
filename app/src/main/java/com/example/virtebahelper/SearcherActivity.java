@@ -1,7 +1,6 @@
 /*
-An Android App that helps EMT´s in Austria with VirtEBA.
-Also an age calculator
-Copyright: Lukas Becker, 2019
+This is the Searcher Class, in here, you can look for codes by entering Keywords
+We are reading the pzc.txt file seperatly here to improve performance
 */
 
 package com.example.virtebahelper;
@@ -49,12 +48,10 @@ public class SearcherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_searcher); //set the view to activity.main
 
         //Add the UI Items
-        textView= findViewById(R.id.textView1);
-        number = findViewById(R.id.editText);
+        textView= findViewById(R.id.textView1); //AutoFillTextField
+        number = findViewById(R.id.editText); //displays the pzc
 
-
-        Button backBtn = findViewById(R.id.backBtnSearcher);
-
+        Button backBtn = findViewById(R.id.backBtnSearcher); //returns to the main menu
 
         textView.setMovementMethod(new ScrollingMovementMethod()); //make the textView scrollable
 
@@ -63,7 +60,7 @@ public class SearcherActivity extends AppCompatActivity {
         reader = new BufferedReader(new InputStreamReader(stream));
 
 
-        final Thread readThread = new Thread(()->{
+        final Thread readThread = new Thread(()->{ //Lambda Expression!
             if (stream != null) {
                 try {
 
@@ -86,7 +83,7 @@ public class SearcherActivity extends AppCompatActivity {
 
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    e.printStackTrace(); //Remove for build!
                 }
             }
         });
@@ -116,7 +113,7 @@ public class SearcherActivity extends AppCompatActivity {
     }
 
 
-    private void goBack()
+    private void goBack() //standard method to return to main menu
     {
         Intent goBackIntent = new Intent(this,StartUpActivity.class);
         startActivity(goBackIntent);

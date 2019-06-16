@@ -1,5 +1,10 @@
+/*
+"Chirurgische Codes"-Class
+ */
+
 package com.example.virtebahelper;
 
+//imports handled by IntelliJ
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,25 +19,26 @@ public class ChirActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chir);
 
-        Button backBtn = findViewById(R.id.backBtnChir);
+        Button backBtn = findViewById(R.id.backBtnChir); //generic "back" button
         EditText text = findViewById(R.id.editTextChir);
-        text.setEnabled(false);
+        text.setEnabled(false); // better design
+        //local variables
         String [] chirDiag = new String[156];
         String [] chirCodes = new String[156];
 
-        int i = 0;
+        int i = 0; //counter
         for(String c:StartUpActivity.allCodes)
         {
-            if(c.startsWith("2"))
+            if(c.startsWith("2")) //2=surgical dept.
             {
-                chirCodes[i] = c;
-                int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                chirDiag[i] = StartUpActivity.allDiag[pos];
+                chirCodes[i] = c; //save the code to local var
+                int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c); //get the position of the code in the original var
+                chirDiag[i] = StartUpActivity.allDiag[pos]; //save the corresponding diagnosis the the local var
             }
-            i++;
+            i++; //counter +1
         }
 
-        for(String s:chirCodes)
+        for(String s:chirCodes) //write to text area
         {
             if(s != null)
             {

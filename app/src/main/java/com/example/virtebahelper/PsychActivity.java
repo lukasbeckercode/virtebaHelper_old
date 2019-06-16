@@ -1,3 +1,8 @@
+/*
+"Psych-Codes"-Class
+uses variables from StartUpActivity-Class
+for better comments, look at ChirActivity and SonstActivity!
+ */
 package com.example.virtebahelper;
 
 import android.content.Intent;
@@ -23,7 +28,7 @@ public class PsychActivity extends AppCompatActivity {
         int i = 0;
         for(String c:StartUpActivity.allCodes)
         {
-            if(c.startsWith("43"))
+            if(c.startsWith("43")) //43=Psych
             {
                 psychCodes[i] = c;
                 int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);

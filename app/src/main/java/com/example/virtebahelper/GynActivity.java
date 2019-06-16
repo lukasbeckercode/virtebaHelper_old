@@ -1,5 +1,12 @@
+/*
+"Gyn-Pädiatrie-Codes"-Class
+uses variables from StartUpActivity-Class
+for better comments, look at ChirActivity and SonstActivity!
+ */
+
 package com.example.virtebahelper;
 
+//IntelliJ Imports
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +32,7 @@ public class GynActivity extends AppCompatActivity {
         int i = 0;
         for(String c:StartUpActivity.allCodes)
         {
-            if(c.startsWith("5"))
+            if(c.startsWith("5")) //5=gyn & children
             {
                 gynCodes[i] = c;
                 int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);

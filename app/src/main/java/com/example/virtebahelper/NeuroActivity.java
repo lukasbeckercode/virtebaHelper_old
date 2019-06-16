@@ -1,3 +1,8 @@
+/*
+"Neuro-Codes"-Class
+uses variables from StartUpActivity-Class
+for better comments, look at ChirActivity and SonstActivity!
+ */
 package com.example.virtebahelper;
 
 import android.content.Intent;
@@ -22,7 +27,7 @@ public class NeuroActivity extends AppCompatActivity {
         int i = 0;
         for(String c:StartUpActivity.allCodes)
         {
-            if(c.startsWith("41") || c.startsWith("42"))
+            if(c.startsWith("41") || c.startsWith("42")) //41=neuro; 42=insult
             {
                 neuroCodes[i] = c;
                 int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);

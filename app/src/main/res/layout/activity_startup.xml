@@ -7,8 +7,8 @@
     tools:context="com.example.virtebahelper.StartUpActivity">
 
     <ScrollView
-        android:layout_width="357dp"
-        android:layout_height="590dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
 
         android:layout_marginTop="32dp"
         android:fillViewport="true"
@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <Button
@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#D4D5D6"
                 android:text="Suchfunktion" />
 
             <Button
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#6EB97D"
                 android:text="Chirugie-Codes" />
 
             <Button
@@ -47,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#C6D9EE"
                 android:text="Innere-Codes" />
 
             <Button
@@ -55,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#F5EB67"
                 android:text="Neuro-Codes" />
 
             <Button
@@ -63,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#B699C4"
                 android:text="Psych-Codes" />
 
             <Button
@@ -71,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#8FB4DB"
                 android:text="Gyn/Pädiatrie-Codes" />
 
             <Button
@@ -79,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:backgroundTint="#C4D59A"
                 android:clickable="false"
                 android:text="Sonstige Codes" />
 

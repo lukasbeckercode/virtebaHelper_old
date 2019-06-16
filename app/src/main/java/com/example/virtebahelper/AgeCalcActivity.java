@@ -1,27 +1,32 @@
+/*
+This is the Age Calculator Class
+*/
 package com.example.virtebahelper;
 
+//imports handled by intelliJ
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
 import java.util.Calendar;
 import java.util.TimeZone;
 
 public class AgeCalcActivity extends AppCompatActivity {
-
+    //the text-fields
     private EditText date;
     private EditText age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age_calc);
-        Button backBtn = findViewById(R.id.backBtnAge);
+
+        Button backBtn = findViewById(R.id.backBtnAge); //generic "back" button
         Button calcDateBtn = findViewById(R.id.buttonCalc);
+        //assign textfields
         date = findViewById(R.id.editTextDate);
         age = findViewById(R.id.editTextAge);
-        backBtn.setOnClickListener(v->goBack());
+        backBtn.setOnClickListener(v->goBack()); //go back to main menu
 
         calcDateBtn.setOnClickListener((v)->{
 
@@ -48,7 +53,7 @@ public class AgeCalcActivity extends AppCompatActivity {
                         getMonth = getDate.substring(getDate.indexOf("/") + 1, getDate.lastIndexOf("/"));
                         getYear = getDate.substring(getDate.lastIndexOf("/") + 1);
 
-                    } else if(!getDate.isEmpty()) {
+                    } else if(!getDate.isEmpty()) { //DDMMYYYY format
                         getDay = getDate.substring(0,2);
                         getMonth = getDate.substring(2,4);
                         getYear = getDate.substring(4);
@@ -111,7 +116,7 @@ public class AgeCalcActivity extends AppCompatActivity {
 
         return age; //return the age
     }
-    private void goBack()
+    private void goBack() //generic "return to main menu method
     {
         Intent goBackIntent = new Intent(this,StartUpActivity.class);
         startActivity(goBackIntent);
