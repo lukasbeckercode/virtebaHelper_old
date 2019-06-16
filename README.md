@@ -4,6 +4,7 @@ Simply type in a Keyword and select the Diagnois you want and it prints back the
 Alternatively, you can select a category (e.g. Psychiatry) and look for the code that fits your needs! <br />
 Also includes an Age Calculator! <br />
 Format for input age DD.MM.YYYY, DD/MM/YYYY (recommended) or DD.MM.YY , DD/MM/YY (works a bit less reliably) <br />
+Works with Android 7.0 and above!<br />
 <br />
 [Link](https://play.google.com/store/apps/details?id=com.lukasbeckercode.virtebahelper) to the current Version on Google Play<br />
 Licensed under the [GNU GPLv3](LICENSE)
