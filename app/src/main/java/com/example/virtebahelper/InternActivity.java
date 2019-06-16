@@ -5,16 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class InternActivity extends AppCompatActivity {
-    private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
-    private BufferedReader reader;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +15,7 @@ public class InternActivity extends AppCompatActivity {
         Button backBtn = findViewById(R.id.backBtnIntern);
 
         EditText text = findViewById(R.id.editTextIntern);
-
+        text.setEnabled(false);
         String [] InternDiag = new String[156];
         String [] InternCodes = new String[156];
 

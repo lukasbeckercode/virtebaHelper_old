@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.example.virtebahelper.NeuroActivity">
 
-    <EditText
-        android:id="@+id/editTextNeuro"
-        android:layout_width="391dp"
-        android:layout_height="624dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-
-        app:layout_constraintEnd_toEndOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editTextNeuro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+
+                />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/backBtnNeuro"

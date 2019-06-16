@@ -5,15 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class GynActivity extends AppCompatActivity {
-    private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
-    private BufferedReader reader;
+
 
 
     @Override
@@ -23,7 +18,7 @@ public class GynActivity extends AppCompatActivity {
         Button backBtn = findViewById(R.id.backBtnGyn);
         backBtn.setOnClickListener(v -> goBack());
         EditText text = findViewById(R.id.editTextGyn);
-
+        text.setEnabled(false);
         String [] gynDiag = new String[156];
         String [] gynCodes = new String[156];
 

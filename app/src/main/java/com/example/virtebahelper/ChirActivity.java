@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class ChirActivity extends AppCompatActivity {
@@ -20,7 +16,7 @@ public class ChirActivity extends AppCompatActivity {
 
         Button backBtn = findViewById(R.id.backBtnChir);
         EditText text = findViewById(R.id.editTextChir);
-
+        text.setEnabled(false);
         String [] chirDiag = new String[156];
         String [] chirCodes = new String[156];
 

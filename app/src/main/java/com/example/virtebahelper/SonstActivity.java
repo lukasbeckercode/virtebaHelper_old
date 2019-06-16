@@ -23,7 +23,7 @@ public class SonstActivity extends AppCompatActivity {
         Button backBtn = findViewById(R.id.backBtnSonst);
 
         EditText text = findViewById(R.id.editTextSonst);
-
+        text.setEnabled(false);
 
          int i = 0;
       for(String c:StartUpActivity.allCodes)
