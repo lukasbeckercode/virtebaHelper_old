@@ -9,31 +9,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class StartUpActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-    //Button Variables
-    private Button openSearchBtn;
-    private Button openChirBtn;
-    private Button openInternBtn;
-    private Button openNeuroBtn;
-    private Button openPsychBtn;
-    private Button openGynBtn;
-    private Button openSonstBtn;
-    private Button openAgeCalcBtn;
+public class StartUpActivity extends AppCompatActivity {
+    private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
+    private BufferedReader reader;
+    public String [] compCodes = new String[156];
+    public static String [] allDiag = new String[156];
+    public static String [] allCodes = new String[156];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
 
         //Create the Buttons
-        openSearchBtn = findViewById(R.id.openSearchBtn);
-        openChirBtn = findViewById(R.id.openChirBtn);
-        openInternBtn = findViewById(R.id.openInternBtn);
-        openNeuroBtn = findViewById(R.id.openNeuroBtn);
-        openPsychBtn = findViewById(R.id.openPsychBtn);
-        openGynBtn = findViewById(R.id.openGynBtn);
-        openSonstBtn = findViewById(R.id.openSonstBtn);
-        openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
+        //Button Variables
+        Button openSearchBtn = findViewById(R.id.openSearchBtn);
+        Button openChirBtn = findViewById(R.id.openChirBtn);
+        Button openInternBtn = findViewById(R.id.openInternBtn);
+        Button openNeuroBtn = findViewById(R.id.openNeuroBtn);
+        Button openPsychBtn = findViewById(R.id.openPsychBtn);
+        Button openGynBtn = findViewById(R.id.openGynBtn);
+        Button openSonstBtn = findViewById(R.id.openSonstBtn);
+        Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
+
+       readData(R.raw.pzc);
+
+        openSonstBtn.setClickable(true);
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());
@@ -81,5 +86,41 @@ public class StartUpActivity extends AppCompatActivity {
     private void openAgeCalcActivity(){
         Intent openAgeCalcIntent = new Intent(this,AgeCalcActivity.class);
         startActivity(openAgeCalcIntent);
+    }
+
+    public void readData(int id){
+        stream = this.getResources().openRawResource(id); //get the file
+        reader = new BufferedReader(new InputStreamReader(stream));
+
+        final Thread readThread = new Thread(()->{
+            if (stream != null) {
+                try {
+
+                    // a var to save the read data to
+                    String data;
+                    for (int i = 0; (data = reader.readLine()) != null; i++) //read until every line is finished
+                    {
+                        compCodes[i] = data; //add the data to the Array
+                    }
+
+                    for (int i = 0; i < compCodes.length; i++) {
+
+                        allCodes[i] = compCodes[i].substring(0, compCodes[i].indexOf("---")); //read the code
+                        allDiag[i] = compCodes[i].substring(compCodes[i].indexOf("---") + 3); //read the diagnosis
+
+                    }
+
+                    stream.close(); //close the stream
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        readThread.start();
+        while (readThread.isAlive())
+        {
+
+        }
     }
 }
