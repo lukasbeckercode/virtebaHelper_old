@@ -1,5 +1,6 @@
 /*
 This is the Age Calculator Class
+TODO: Check age result for plausibility, handle missing dots (e.g. 20.0698)
 */
 package com.example.virtebahelper;
 
@@ -107,10 +108,10 @@ public class AgeCalcActivity extends AppCompatActivity {
         age = curYear - y; // calculate the age
 
         //if the person hadn´t had their birthday yet, we need to subtract 1 year from their age
-        if(m>curMonth)
+        if(m>=curMonth) //if the month of their birthday hast´nt already been
         {
-            if (d > curDay) {
-                age--;
+            if (d > curDay) { //and their birthday isn´t yet reached
+                age--; //substract one year from the age
             }
         }
 
