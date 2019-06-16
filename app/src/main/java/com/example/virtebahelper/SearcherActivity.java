@@ -10,6 +10,7 @@ package com.example.virtebahelper;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.content.Intent;
 
 import android.text.method.ScrollingMovementMethod;
 
@@ -28,7 +29,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 
-public class MainActivity extends AppCompatActivity {
+public class SearcherActivity extends AppCompatActivity {
 
     //UI Variables
     private AutoCompleteTextView textView;
@@ -48,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //set the view to activity.main
+        setContentView(R.layout.activity_searcher); //set the view to activity.main
 
         //Add the UI Items
         textView= findViewById(R.id.textView1);
         number = findViewById(R.id.editText);
         date = findViewById(R.id.editTextDate);
         Button calcDateBtn = findViewById(R.id.buttonCalc);
+        Button backBtn = findViewById(R.id.backBtnSearcher);
         age = findViewById(R.id.editTextAge);
 
         textView.setMovementMethod(new ScrollingMovementMethod()); //make the textView scrollable
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
            System.out.println(getDay+"/"+getMonth+"/"+getYear);//DEBUGGING
         });
-
+        backBtn.setOnClickListener(v->goBack());
 
     }
     private int calcAge(int d, int m, int y) //this method calculates the age
@@ -200,5 +202,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return age; //return the age
+    }
+
+    private void goBack()
+    {
+        Intent goBackIntent = new Intent(this,StartUpActivity.class);
+        startActivity(goBackIntent);
     }
 }
