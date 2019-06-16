@@ -19,6 +19,7 @@ public class StartUpActivity extends AppCompatActivity {
     Button openPsychBtn;
     Button openGynBtn;
     Button openSonstBtn;
+    Button openAgeCalcBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class StartUpActivity extends AppCompatActivity {
         openPsychBtn = findViewById(R.id.openPsychBtn);
         openGynBtn = findViewById(R.id.openGynBtn);
         openSonstBtn = findViewById(R.id.openSonstBtn);
+        openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());
@@ -41,6 +43,7 @@ public class StartUpActivity extends AppCompatActivity {
         openPsychBtn.setOnClickListener(v->openPsychActivity());
         openGynBtn.setOnClickListener(v->openGynActivity());
         openSonstBtn.setOnClickListener(v->openSonstActivity());
+        openAgeCalcBtn.setOnClickListener(v->openAgeCalcActivity());
     }
 
     private void openSearchActivity(){
@@ -74,5 +77,9 @@ public class StartUpActivity extends AppCompatActivity {
     private void openSonstActivity(){
         Intent openSonstIntent = new Intent(this,SonstActivity.class);
         startActivity(openSonstIntent);
+    }
+    private void openAgeCalcActivity(){
+        Intent openAgeCalcIntent = new Intent(this,AgeCalcActivity.class);
+        startActivity(openAgeCalcIntent);
     }
 }
