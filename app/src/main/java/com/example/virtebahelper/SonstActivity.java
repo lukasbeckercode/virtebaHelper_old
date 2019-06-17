@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class SonstActivity extends AppCompatActivity {
 
     //create local variables to save the specific codes
-    String [] sonstDiag = new String[156];
-    String [] sonstCodes = new String[156];
+    private final String [] sonstDiag = new String[156];
+    private final String [] sonstCodes = new String[156];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

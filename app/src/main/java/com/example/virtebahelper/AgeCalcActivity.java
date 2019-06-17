@@ -59,29 +59,29 @@ public class AgeCalcActivity extends AppCompatActivity {
                         getYear = getDate.substring(4);
 
                     }
-                    else ageLabel.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
+                    else ageLabel.setText(R.string.age_invalid); //if something weird is inputted, tell the user they messed up
 
                 } catch (Exception e) {
 
                     e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
-                    ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                    ageLabel.setText(R.string.age_invalid);//if something weird is inputted, tell the user they messed up
                 }
                 try {
                     int i = calcAge(Integer.parseInt(getDay),Integer.parseInt(getMonth), Integer.parseInt(getYear)); //call the method calcAge, parse the Strings to ints
                     ageLabel.setText(String.valueOf(i)); //tell the user the age
                     if(ageLabel.getText().toString().equals("-1"))
                     {
-                        ageLabel.setText("Ungültiges Geburtsdatum");
+                        ageLabel.setText(R.string.date_invalid);
                     }
                 } catch (Exception e)
                 {
                     e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
-                    ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                    ageLabel.setText(R.string.age_invalid);//if something weird is inputted, tell the user they messed up
                 }
 
 
             } else {
-                ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                ageLabel.setText(R.string.age_invalid);//if something weird is inputted, tell the user they messed up
             }
 
 

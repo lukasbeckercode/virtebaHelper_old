@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Zurück"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -35,10 +35,12 @@
         android:id="@+id/buttonCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="172dp"
         android:text="Alter errechnen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         tools:ignore="HardcodedText" />
 
@@ -46,6 +48,7 @@
         android:id="@+id/editTextAge"
         android:layout_width="121dp"
         android:layout_height="50dp"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="202dp"
         android:ems="10"
@@ -53,5 +56,6 @@
         android:importantForAutofill="no"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalc" />
 </android.support.constraint.ConstraintLayout>

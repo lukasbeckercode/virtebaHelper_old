@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:fillViewport="true"
         android:scrollbarStyle="insideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
@@ -32,7 +33,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#D4D5D6"
-                android:text="Suchfunktion" />
+                android:text="@string/suchfunktion" />
 
             <Button
                 android:id="@+id/openChirBtn"
@@ -41,7 +42,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#6EB97D"
-                android:text="Chirugie-Codes" />
+                android:text="@string/chirugie_codes" />
 
             <Button
                 android:id="@+id/openInternBtn"
@@ -50,7 +51,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#C6D9EE"
-                android:text="Innere-Codes" />
+                android:text="@string/innere_codes" />
 
             <Button
                 android:id="@+id/openNeuroBtn"
@@ -59,7 +60,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#F5EB67"
-                android:text="Neuro-Codes" />
+                android:text="@string/neuro_codes" />
 
             <Button
                 android:id="@+id/openPsychBtn"
@@ -68,7 +69,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#B699C4"
-                android:text="Psych-Codes" />
+                android:text="@string/psych_codes" />
 
             <Button
                 android:id="@+id/openGynBtn"
@@ -77,7 +78,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#8FB4DB"
-                android:text="Gyn/Pädiatrie-Codes" />
+                android:text="@string/gyn_p_diatrie_codes" />
 
             <Button
                 android:id="@+id/openSonstBtn"
@@ -87,7 +88,7 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#C4D59A"
                 android:clickable="false"
-                android:text="Sonstige Codes" />
+                android:text="@string/sonstige_codes" />
 
             <Button
                 android:id="@+id/openAgeCalcBtn"
@@ -95,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="Altersrechner" />
+                android:text="@string/altersrechner" />
         </LinearLayout>
     </ScrollView>
 

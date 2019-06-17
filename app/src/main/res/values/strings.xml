@@ -3,5 +3,15 @@
     <string name="dd_mm_yyyy">DD.MM.YYYY</string>
     <string name="pzc">PZC</string>
     <string name="alter">Alter</string>
-    <string name="pzc_s_erscheinen_hier">PZC´s erscheinen hier</string>
+    <string name="age_invalid">Format DD.MM.YYYY verwenden</string>
+    <string name="date_invalid">Ungültiges Geburtsdatum</string>
+    <string name="suchfunktion">Suchfunktion</string>
+    <string name="chirugie_codes">Chirugie-Codes</string>
+    <string name="innere_codes">Innere-Codes</string>
+    <string name="neuro_codes">Neuro-Codes</string>
+    <string name="psych_codes">Psych-Codes</string>
+    <string name="gyn_p_diatrie_codes">Gyn/Pädiatrie-Codes</string>
+    <string name="sonstige_codes">Sonstige Codes</string>
+    <string name="altersrechner">Altersrechner</string>
+    <string name="back">Zurück</string>
 </resources>

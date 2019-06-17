@@ -22,10 +22,10 @@ import java.io.InputStreamReader;
 public class StartUpActivity extends AppCompatActivity {
     private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
     private BufferedReader reader;
-    public String [] compCodes = new String[156]; //the entire text of pzc.txt is saved here
+    private final String [] compCodes = new String[156]; //the entire text of pzc.txt is saved here
     //These will be accessed bya all the other Activities!
-    public static String [] allDiag = new String[156]; //only the diagnosis text is saved here
-    public static String [] allCodes = new String[156]; //only the pzc´s are saved here
+    public static final String [] allDiag = new String[156]; //only the diagnosis text is saved here
+    public static final String [] allCodes = new String[156]; //only the pzc´s are saved here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class StartUpActivity extends AppCompatActivity {
         Button openSonstBtn = findViewById(R.id.openSonstBtn);
         Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
 
-        readData(R.raw.pzc); //call the Method to read the Textfile (argument is the location of the file)
+        readData(); //call the Method to read the Textfile (argument is the location of the file)
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());
@@ -96,8 +96,8 @@ public class StartUpActivity extends AppCompatActivity {
     }
 
     //this method reads the pzc.txt file
-    public void readData(int id){
-        stream = this.getResources().openRawResource(id); //get the file
+    private void readData(){
+        stream = this.getResources().openRawResource(R.raw.pzc); //get the file
         reader = new BufferedReader(new InputStreamReader(stream));
 
         final Thread readThread = new Thread(()->{
