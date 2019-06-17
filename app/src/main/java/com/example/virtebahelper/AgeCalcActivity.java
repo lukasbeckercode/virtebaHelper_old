@@ -1,6 +1,5 @@
 /*
 This is the Age Calculator Class
-TODO: Check age result for plausibility, handle missing dots (e.g. 20.0698)
 */
 package com.example.virtebahelper;
 
@@ -16,7 +15,7 @@ import java.util.TimeZone;
 public class AgeCalcActivity extends AppCompatActivity {
     //the text-fields
     private EditText date;
-    private EditText age;
+    private EditText ageLabel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,7 @@ public class AgeCalcActivity extends AppCompatActivity {
         Button calcDateBtn = findViewById(R.id.buttonCalc);
         //assign textfields
         date = findViewById(R.id.editTextDate);
-        age = findViewById(R.id.editTextAge);
+        ageLabel = findViewById(R.id.editTextAge);
         backBtn.setOnClickListener(v->goBack()); //go back to main menu
 
         calcDateBtn.setOnClickListener((v)->{
@@ -43,7 +42,7 @@ public class AgeCalcActivity extends AppCompatActivity {
                 try { //users are stupid, so we use this to avoid the app crashing
 
                     //There are two allowed separators / and . :
-                    if(getDate.contains(".")) { //if the . is used
+                    if(getDate.contains(".")&&getDate.indexOf(".") !=getDate.lastIndexOf(".") ) { //if the . is used
 
                         getDay = getDate.substring(0, getDate.indexOf(".")); //first number in front of the .
                         getMonth = getDate.substring(getDate.indexOf(".") + 1, getDate.lastIndexOf(".")); //number between the two .
@@ -60,25 +59,29 @@ public class AgeCalcActivity extends AppCompatActivity {
                         getYear = getDate.substring(4);
 
                     }
-                    else age.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
+                    else ageLabel.setText("Format DD.MM.YYYY verwenden"); //if something weird is inputted, tell the user they messed up
 
                 } catch (Exception e) {
 
                     e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
-                    age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                    ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
                 }
                 try {
                     int i = calcAge(Integer.parseInt(getDay),Integer.parseInt(getMonth), Integer.parseInt(getYear)); //call the method calcAge, parse the Strings to ints
-                    age.setText(String.valueOf(i)); //tell the user the age
+                    ageLabel.setText(String.valueOf(i)); //tell the user the age
+                    if(ageLabel.getText().toString() != "-1")
+                    {
+                        ageLabel.setText("Ungültiges Geburtsdatum");
+                    }
                 } catch (Exception e)
                 {
                     e.printStackTrace(); //Debugging, REMOVE FOR FINAL BUILD
-                    age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                    ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
                 }
 
 
             } else {
-                age.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
+                ageLabel.setText("Format DD.MM.YYYY verwenden");//if something weird is inputted, tell the user they messed up
             }
 
 
@@ -113,6 +116,11 @@ public class AgeCalcActivity extends AppCompatActivity {
             if (d > curDay) { //and their birthday isn´t yet reached
                 age--; //substract one year from the age
             }
+        }
+
+        if(age < 0 || age > 120)
+        {
+            age = -1;
         }
 
         return age; //return the age

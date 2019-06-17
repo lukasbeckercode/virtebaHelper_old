@@ -1,6 +1,5 @@
 /*
 "Chirurgische Codes"-Class
-TODO: IN ALL OTHER CLASSES: remove keyboard in disabled text-fields
  */
 
 package com.example.virtebahelper;
