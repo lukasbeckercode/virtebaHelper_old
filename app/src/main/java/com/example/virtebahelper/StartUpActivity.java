@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class StartUpActivity extends AppCompatActivity {
-    private InputStream stream; //a stream reader that reads a text file with all the diagnosis inside
+    private InputStream stream; //a stream reader that reads a text file with all the dagnosis inside
     private BufferedReader reader;
     private final String [] compCodes = new String[156]; //the entire text of pzc.txt is saved here
     //These will be accessed bya all the other Activities!
