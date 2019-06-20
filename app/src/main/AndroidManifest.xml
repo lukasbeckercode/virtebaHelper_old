@@ -14,17 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".AgeCalcActivity" />
-        <activity android:name=".SonstActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".GynActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".PsychActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".NeuroActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".InternActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ChirActivity"
+        <activity android:name=".CategoryViewActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".StartUpActivity">
             <intent-filter>

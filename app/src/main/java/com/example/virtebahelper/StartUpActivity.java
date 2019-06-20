@@ -26,6 +26,7 @@ public class StartUpActivity extends AppCompatActivity {
     //These will be accessed bya all the other Activities!
     public static final String [] allDiag = new String[156]; //only the diagnosis text is saved here
     public static final String [] allCodes = new String[156]; //only the pzc´s are saved here
+    public static int kat = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,24 +36,42 @@ public class StartUpActivity extends AppCompatActivity {
         //Create the Buttons
         //Button Variables
         Button openSearchBtn = findViewById(R.id.openSearchBtn);
-        Button openChirBtn = findViewById(R.id.openChirBtn);
-        Button openInternBtn = findViewById(R.id.openInternBtn);
-        Button openNeuroBtn = findViewById(R.id.openNeuroBtn);
-        Button openPsychBtn = findViewById(R.id.openPsychBtn);
-        Button openGynBtn = findViewById(R.id.openGynBtn);
-        Button openSonstBtn = findViewById(R.id.openSonstBtn);
+        Button openChirBtn = findViewById(R.id.openChirBtn); // 1
+        Button openInternBtn = findViewById(R.id.openInternBtn); //2
+        Button openNeuroBtn = findViewById(R.id.openNeuroBtn); //3
+        Button openPsychBtn = findViewById(R.id.openPsychBtn); //4
+        Button openGynBtn = findViewById(R.id.openGynBtn); //5
+        Button openSonstBtn = findViewById(R.id.openSonstBtn);//6
         Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
 
         readData(); //call the Method to read the Textfile (argument is the location of the file)
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());
-        openChirBtn.setOnClickListener(v->openChirAcitivty());
-        openInternBtn.setOnClickListener(v->openInternActivity());
-        openNeuroBtn.setOnClickListener(v->openNeuroActivity());
-        openPsychBtn.setOnClickListener(v->openPsychActivity());
-        openGynBtn.setOnClickListener(v->openGynActivity());
-        openSonstBtn.setOnClickListener(v->openSonstActivity());
+        openChirBtn.setOnClickListener(v->{
+            openCategoryViewActivity();
+            kat = 1;
+        });
+        openInternBtn.setOnClickListener(v->{
+           openCategoryViewActivity();
+            kat = 2;
+        });
+        openNeuroBtn.setOnClickListener(v->{
+           openCategoryViewActivity();
+            kat = 3;
+        });
+        openPsychBtn.setOnClickListener(v->{
+           openCategoryViewActivity();
+            kat = 4;
+        });
+        openGynBtn.setOnClickListener(v->{
+            openCategoryViewActivity();
+            kat = 5;
+        });
+        openSonstBtn.setOnClickListener(v->{
+            openCategoryViewActivity();
+            kat = 6;
+        });
         openAgeCalcBtn.setOnClickListener(v->openAgeCalcActivity());
     }
 
@@ -63,33 +82,12 @@ public class StartUpActivity extends AppCompatActivity {
         startActivity(openSearchIntent);
     }
 
-    private void openChirAcitivty() {
-        Intent openChirIntent = new Intent(this,ChirActivity.class);
+    private void openCategoryViewActivity() {
+        Intent openChirIntent = new Intent(this, CategoryViewActivity.class);
         startActivity(openChirIntent);
     }
 
-    private void openInternActivity(){
-        Intent openInternIntent = new Intent(this,InternActivity.class);
-        startActivity(openInternIntent);
-    }
 
-    private void openNeuroActivity(){
-        Intent openNeuroIntent = new Intent(this,NeuroActivity.class);
-        startActivity(openNeuroIntent);
-    }
-
-    private void openPsychActivity(){
-        Intent openPsychIntent = new Intent(this,PsychActivity.class);
-        startActivity(openPsychIntent);
-    }
-    private void openGynActivity(){
-        Intent openGynIntent = new Intent(this,GynActivity.class);
-        startActivity(openGynIntent);
-    }
-    private void openSonstActivity(){
-        Intent openSonstIntent = new Intent(this,SonstActivity.class);
-        startActivity(openSonstIntent);
-    }
     private void openAgeCalcActivity(){
         Intent openAgeCalcIntent = new Intent(this,AgeCalcActivity.class);
         startActivity(openAgeCalcIntent);
