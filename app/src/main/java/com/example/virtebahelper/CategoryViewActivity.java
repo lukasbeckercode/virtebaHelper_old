@@ -1,5 +1,5 @@
 /*
-"Chirurgische Codes"-Class
+Class in which the Categories of codes are displayed
  */
 
 package com.example.virtebahelper;
@@ -13,9 +13,9 @@ import android.widget.EditText;
 import java.util.Arrays;
 
 public class CategoryViewActivity extends AppCompatActivity {
-    //local variables
-    String [] chirDiag = new String[156];
-    String [] chirCodes = new String[156];
+
+    String [] catDiag = new String[156];
+    String [] catCodes = new String[156];
     int kat_local = StartUpActivity.kat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +26,14 @@ public class CategoryViewActivity extends AppCompatActivity {
         EditText text = findViewById(R.id.editTextChir);
         text.setEnabled(false); // better design
 
-        getCodes(kat_local);
+        getCodes(kat_local); // call the getCodes method and pass an int to tell it which codes we want
 
-        for(String s:chirCodes) //write to text area
+        for(String s:catCodes) //write to text area
         {
             if(s != null)
             {
-                int pos = Arrays.asList(chirCodes).indexOf(s);
-                text.append(s+": "+chirDiag[pos]+"\n");
+                int pos = Arrays.asList(catCodes).indexOf(s);
+                text.append(s+": "+catDiag[pos]+"\n");
             }
 
         }
@@ -47,60 +47,60 @@ public class CategoryViewActivity extends AppCompatActivity {
         startActivity(goBackIntent);
     }
 
-    private void getCodes(int kat){
+    private void getCodes(int kat){ //getCodes method, need an int to tell it which codes to display
 
 
         int i = 0; //counter
         for(String c:StartUpActivity.allCodes)
         {
-            switch (kat)
+            switch (kat) //which category is wanted
             {
-                case 1:
+                case 1: //surgical codes
                     if(c.startsWith("2")) //2=surgical dept.
                     {
-                        chirCodes[i] = c; //save the code to local var
+                        catCodes[i] = c; //save the code to local var
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c); //get the position of the code in the original var
-                        chirDiag[i] = StartUpActivity.allDiag[pos]; //save the corresponding diagnosis the the local var
+                        catDiag[i] = StartUpActivity.allDiag[pos]; //save the corresponding diagnosis the the local var
                     }
                     break;
-                case 2:
+                case 2: //internal codes
                     if(c.startsWith("3")) //3=innere medizin
                     {
-                        chirCodes[i] = c;
+                        catCodes[i] = c;
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        chirDiag[i] = StartUpActivity.allDiag[pos];
+                        catDiag[i] = StartUpActivity.allDiag[pos];
                     }
                     break;
-                case 3:
+                case 3: //neurological codes
                     if(c.startsWith("41") || c.startsWith("42")) //41=neuro; 42=insult
                     {
-                        chirCodes[i] = c;
+                        catCodes[i] = c;
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        chirDiag[i] = StartUpActivity.allDiag[pos];
+                        catDiag[i] = StartUpActivity.allDiag[pos];
                     }
                     break;
-                case 4:
+                case 4: //psych codes
                     if(c.startsWith("43")) //43=Psych
                     {
-                        chirCodes[i] = c;
+                        catCodes[i] = c;
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        chirDiag[i] = StartUpActivity.allDiag[pos];
+                        catDiag[i] = StartUpActivity.allDiag[pos];
                     }
                     break;
-                case 5:
+                case 5: //gyn/children
                     if(c.startsWith("5")) //5=gyn & children
                     {
-                        chirCodes[i] = c;
+                        catCodes[i] = c;
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        chirDiag[i] = StartUpActivity.allDiag[pos];
+                        catDiag[i] = StartUpActivity.allDiag[pos];
                     }
                     break;
-                case 6:
+                case 6: //misc. codes
                     if(c.startsWith("1") || c.startsWith("7")) //1=CPR; 7=Misc. Codes
                     {
-                        chirCodes[i] = c; //save the code to the array
+                        catCodes[i] = c; //save the code to the array
                         int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c); //get the position of the code within the original array
-                        chirDiag[i] = StartUpActivity.allDiag[pos]; //get the corresponding diagnosis
+                        catDiag[i] = StartUpActivity.allDiag[pos]; //get the corresponding diagnosis
                     }
                     break;
             }
