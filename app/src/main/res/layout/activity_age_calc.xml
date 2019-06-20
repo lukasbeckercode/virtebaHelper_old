@@ -29,7 +29,8 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute" />
 
     <Button
         android:id="@+id/buttonCalc"
@@ -57,5 +58,6 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCalc" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCalc"
+        tools:ignore="UnusedAttribute" />
 </android.support.constraint.ConstraintLayout>

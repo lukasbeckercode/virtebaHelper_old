@@ -1,6 +1,6 @@
 /*
 This is the Searcher Class, in here, you can look for codes by entering Keywords
-We are reading the pzc.txt file seperatly here to improve performance
+We are reading the pzc.txt file separately here to improve performance
 */
 
 package com.example.virtebahelper;

@@ -44,7 +44,7 @@ public class StartUpActivity extends AppCompatActivity {
         Button openSonstBtn = findViewById(R.id.openSonstBtn);//6
         Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
 
-        readData(); //call the Method to read the Textfile (argument is the location of the file)
+        readData(); //call the Method to read the Text-file (argument is the location of the file)
 
         //Assign the Buttons
         openSearchBtn.setOnClickListener((v)->openSearchActivity());

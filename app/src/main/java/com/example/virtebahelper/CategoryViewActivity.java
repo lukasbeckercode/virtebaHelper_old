@@ -14,9 +14,9 @@ import java.util.Arrays;
 
 public class CategoryViewActivity extends AppCompatActivity {
 
-    String [] catDiag = new String[156];
-    String [] catCodes = new String[156];
-    int kat_local = StartUpActivity.kat;
+    private final String [] catDiag = new String[156];
+    private final String [] catCodes = new String[156];
+    private final int kat_local = StartUpActivity.kat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
