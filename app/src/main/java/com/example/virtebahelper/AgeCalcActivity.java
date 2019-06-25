@@ -16,6 +16,7 @@ public class AgeCalcActivity extends AppCompatActivity {
     //the text-fields
     private EditText date;
     private EditText ageLabel;
+    public static boolean isSubstracted = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +90,7 @@ public class AgeCalcActivity extends AppCompatActivity {
             System.out.println(getDay+"/"+getMonth+"/"+getYear);//DEBUGGING
         });
     }
-    private int calcAge(int d, int m, int y) //this method calculates the age
+    public int calcAge(int d, int m, int y) //this method calculates the age
     {
         int age;
 
@@ -97,6 +98,8 @@ public class AgeCalcActivity extends AppCompatActivity {
         int curDay = calendar.get(Calendar.DAY_OF_MONTH); //get the current day
         int curMonth = calendar.get(Calendar.MONTH)+1; //Months are indexed from 0!
         int curYear = calendar.get(Calendar.YEAR); //get the current year
+
+
 
         System.out.println(curDay+"/"+curMonth+"/"+curYear);//DEBUGGING
 
@@ -111,10 +114,15 @@ public class AgeCalcActivity extends AppCompatActivity {
         age = curYear - y; // calculate the age
 
         //if the person hadn´t had their birthday yet, we need to subtract 1 year from their age
-        if(m>=curMonth) //if the month of their birthday hast´nt already been
+        if(m>curMonth) //if the month of their birthday hast´nt already been
         {
+            --age; //substract one year from the age
+            isSubstracted = true;
+
+        } else if (m == curMonth){
             if (d > curDay) { //and their birthday isn´t yet reached
-                age--; //substract one year from the age
+                --age; //substract one year from the age
+                isSubstracted = true;
             }
         }
 
