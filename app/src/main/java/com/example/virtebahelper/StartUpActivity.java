@@ -43,6 +43,7 @@ public class StartUpActivity extends AppCompatActivity {
         Button openGynBtn = findViewById(R.id.openGynBtn); //5
         Button openSonstBtn = findViewById(R.id.openSonstBtn);//6
         Button openAgeCalcBtn = findViewById(R.id.openAgeCalcBtn);
+        Button openTypeAndCodeBtn = findViewById(R.id.openTypeAndCodeBtn);
 
         readData(); //call the Method to read the Text-file (argument is the location of the file)
 
@@ -73,6 +74,7 @@ public class StartUpActivity extends AppCompatActivity {
             kat = 6;
         });
         openAgeCalcBtn.setOnClickListener(v->openAgeCalcActivity());
+        openTypeAndCodeBtn.setOnClickListener(v -> openTypeAndCodeActivity());
     }
 
     //All these methods open the corresponding Activity(=class)
@@ -85,6 +87,11 @@ public class StartUpActivity extends AppCompatActivity {
     private void openCategoryViewActivity() {
         Intent openChirIntent = new Intent(this, CategoryViewActivity.class);
         startActivity(openChirIntent);
+    }
+
+    private void openTypeAndCodeActivity(){
+        Intent openTypeAndCodeIntent = new Intent(this,TypeAndCodeActivity.class);
+        startActivity(openTypeAndCodeIntent);
     }
 
 

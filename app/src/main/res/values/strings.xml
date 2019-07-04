@@ -13,5 +13,8 @@
     <string name="gyn_p_diatrie_codes">Gyn/Pädiatrie-Codes</string>
     <string name="sonstige_codes">Sonstige Codes</string>
     <string name="altersrechner">Altersrechner</string>
+    <string name="TypeAndCode">Einsatzart/Statistikkennzeichen</string>
+    <string name="Type">Einsatzart</string>
+    <string name="Code">Statistikkennzeichen</string>
     <string name="back">Zurück</string>
 </resources>

@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".TypeAndCodeActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".AgeCalcActivity" />
-        <activity android:name=".CategoryViewActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".CategoryViewActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".StartUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
