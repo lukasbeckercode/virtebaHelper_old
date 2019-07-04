@@ -10,7 +10,7 @@
 10---Übergabe NAH
 11---Übergabe NAW
 12---Mitfahrt verweigert
-13---Leefahrt
+13---Leerfahrt
 14---Übergabe RTW
 15---Belassung
 16---Erste Hilfe-Einsatz

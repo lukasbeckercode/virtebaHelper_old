@@ -14,7 +14,7 @@
 14---Erstickung
 15---Erziehung/Schüler (Unfall)
 16---Freizeit (Unfall)
-17---Gefäßchirugie
+17---Gefäßchirurgie
 18---Geisteskrankheit
 19---Gesundheitsvorsorge
 20---Gewalt/Verbrechen
@@ -23,13 +23,13 @@
 23---Hundebiss
 24---Infektion
 25---K-Einsatzübung
-26---Kieferchirugie
+26---Kieferchirurgie
 27---Kontrolle, Arzt
 28---Landwirtschaft (Unfall)
 29---Leerfahrt
 30---Medikamente (Sachtransport)
 31---Physiotherapie
-32---plast. Chirugie
+32---plast. Chirurgie
 33---Raufhandel
 34---Rehabilitation (Aufenthalt)
 35---Schnellschnitt
