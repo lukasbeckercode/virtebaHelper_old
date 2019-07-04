@@ -1,0 +1,3 @@
+Diese App greift von sich aus auf keinerlei Daten zu, es werden von mir, dem Entwickler keine persönlichen Daten erhoben, verarbeitet oder weitergegeben. 
+Für Informationen, wie Google bzw. Android Daten erhebt, wenden sie sich bitte an die jeweiligen Datenschutzerklärungen. 
+Lukas Becker, 2019
