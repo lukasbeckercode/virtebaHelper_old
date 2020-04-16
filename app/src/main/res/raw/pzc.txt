@@ -95,6 +95,8 @@
 372---Meningitis
 373---Tuberkulose(TBC)
 374---septischer Schock
+376---COVID-19 Verdacht
+377---COVID-19 Positiv
 379---(V.a.)hochansteckende Erkrankung: Tuberkulose, Noro-, Rotavirus, Masern, Röteln, Mumps, Varicellen, Ebola, sonst.
 410---sonstige neurologische Erkrankungen
 411---Krampfanfall bei bekanntem Krampfleiden
