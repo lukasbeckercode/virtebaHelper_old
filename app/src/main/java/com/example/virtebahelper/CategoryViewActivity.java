@@ -1,24 +1,40 @@
-/*
-Class in which the Categories of codes are displayed
- */
-
 package com.example.virtebahelper;
 
 //imports handled by IntelliJ
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
-import java.util.Arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * <title>CategoryViewActivity </title>
+ * <summary>This view adapts to the selected Category and
+ * displays the according Code:Diagnosis pairs</summary>
+ *
+ * @author lukasbecker
+ */
 public class CategoryViewActivity extends AppCompatActivity {
 
-    private final String [] catDiag = new String[158];
-    private final String [] catCodes = new String[158];
+    private List<String> allCodes = new ArrayList<>();
+    TreeMap<Integer, String> codes = new TreeMap<>(); //TreeMap automatically sorts by key
     private final int kat_local = StartUpActivity.kat;
+
+    /**
+     * gets executed each time this class is called
+     * @param savedInstanceState android native param
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        CodeHandler codeHandler = new CodeHandler();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categoryview);
 
@@ -26,86 +42,85 @@ public class CategoryViewActivity extends AppCompatActivity {
         EditText text = findViewById(R.id.editTextChir);
         text.setEnabled(false); // better design
 
-        getCodes(kat_local); // call the getCodes method and pass an int to tell it which codes we want
+        allCodes = codeHandler.getAllCodes();
+        getCodes(kat_local,codeHandler); // call the getCodes method and pass an int to tell it which codes we want
 
-        for(String s:catCodes) //write to text area
-        {
-            if(s != null)
-            {
-                int pos = Arrays.asList(catCodes).indexOf(s);
-                text.append(s+": "+catDiag[pos]+"\n");
-            }
-
+        for (Map.Entry<Integer, String> entry : codes.entrySet()) {
+            @SuppressLint("DefaultLocale") String s = String.format("%d: %s%n", entry.getKey(), entry.getValue());
+            text.append(s);
         }
 
-        backBtn.setOnClickListener(v->goBack());
+        backBtn.setOnClickListener(v -> goBack());
     }
 
-    private void goBack()
-    {
-        Intent goBackIntent = new Intent(this,StartUpActivity.class);
+    /**
+     * to go back to the previous Activity
+     */
+    private void goBack() {
+        Intent goBackIntent = new Intent(this, StartUpActivity.class);
         startActivity(goBackIntent);
     }
 
-    private void getCodes(int kat){ //getCodes method, need an int to tell it which codes to display
+    /**
+     * puts pzc and diagnosis as Key an Value in a TreeList
+     * @param c the code that is added
+     * @param handler CodeHandler Object to retrieve necessary data
+     */
+    private void matchCodes(String c, CodeHandler handler) {
 
+        int pos = allCodes.indexOf(c); //get the position of the code in the original var
+        codes.put(handler.getCode(pos), handler.getDiag(pos));
+    }
 
-        int i = 0; //counter
-        for(String c:StartUpActivity.allCodes)
-        {
+    /**
+     * gets the codes for the wanted Category
+     * @param kat the Category a user selected
+     * @param codeHandler CodeHandler Object to retrieve necessary data
+     */
+    private void getCodes(int kat,CodeHandler codeHandler) { //getCodes method, need an int to tell it which codes to display
+
+        for (int i = 0; i < codeHandler.getListLen(); i++) {
+
+            String c = allCodes.get(i);
             switch (kat) //which category is wanted
             {
                 case 1: //surgical codes
-                    if(c.startsWith("2")) //2=surgical dept.
+                    if (c.startsWith("2")) //2=surgical dept.
                     {
-                        catCodes[i] = c; //save the code to local var
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c); //get the position of the code in the original var
-                        catDiag[i] = StartUpActivity.allDiag[pos]; //save the corresponding diagnosis the the local var
+                        matchCodes(c, codeHandler);
                     }
                     break;
                 case 2: //internal codes
-                    if(c.startsWith("3")) //3=innere medizin
+                    if (c.startsWith("3")) //3=innere medizin
                     {
-                        catCodes[i] = c;
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        catDiag[i] = StartUpActivity.allDiag[pos];
+                        matchCodes(c, codeHandler);
                     }
                     break;
                 case 3: //neurological codes
-                    if(c.startsWith("41") || c.startsWith("42")) //41=neuro; 42=insult
+                    if (c.startsWith("41") || c.startsWith("42")) //41=neuro; 42=insult
                     {
-                        catCodes[i] = c;
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        catDiag[i] = StartUpActivity.allDiag[pos];
+                        matchCodes(c, codeHandler);
                     }
                     break;
                 case 4: //psych codes
-                    if(c.startsWith("43")) //43=Psych
+                    if (c.startsWith("43")) //43=Psych
                     {
-                        catCodes[i] = c;
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        catDiag[i] = StartUpActivity.allDiag[pos];
+                        matchCodes(c, codeHandler);
                     }
                     break;
                 case 5: //gyn/children
-                    if(c.startsWith("5")) //5=gyn & children
+                    if (c.startsWith("5")) //5=gyn & children
                     {
-                        catCodes[i] = c;
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c);
-                        catDiag[i] = StartUpActivity.allDiag[pos];
+                        matchCodes(c, codeHandler);
                     }
                     break;
                 case 6: //misc. codes
-                    if(c.startsWith("1") || c.startsWith("7")) //1=CPR; 7=Misc. Codes
+                    if (c.startsWith("1") || c.startsWith("7")) //1=CPR; 7=Misc. Codes
                     {
-                        catCodes[i] = c; //save the code to the array
-                        int pos = Arrays.asList(StartUpActivity.allCodes).indexOf(c); //get the position of the code within the original array
-                        catDiag[i] = StartUpActivity.allDiag[pos]; //get the corresponding diagnosis
+                        matchCodes(c, codeHandler);
                     }
                     break;
             }
-
-            i++; //counter +1
         }
 
     }
